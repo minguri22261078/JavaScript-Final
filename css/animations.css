@@ -1,0 +1,177 @@
+/* 버튼 호버 효과 */
+#start-button:hover img {
+    transform: scale(1.1);
+}
+
+#start-button:active img {
+    transform: scale(0.9);
+}
+
+.option-button:hover img {
+    transform: scale(1.1);
+}
+
+.option-button:active img {
+    transform: scale(0.9);
+}
+
+#next-button:hover img {
+    transform: scale(1.1);
+}
+
+/* 타이핑 효과 */
+@keyframes blink {
+    0% { border-right-color: #3a2b19; }
+    50% { border-right-color: transparent; }
+    100% { border-right-color: #3a2b19; }
+}
+
+.typing {
+    visibility: visible !important;
+    white-space: pre-wrap;
+    border-right: 2px solid #3a2b19;
+    animation: blink 0.75s step-end infinite;
+}
+
+/* HUD 채우기 효과 */
+.hud-item .fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(255,255,255,0.5);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* 캐릭터 애니메이션 */
+@keyframes characterIdle {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+#character {
+    animation: characterIdle 3s ease-in-out infinite;
+}
+
+/* 드래그 아이템 애니메이션 */
+@keyframes floatItem {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+.draggable-item {
+    cursor: grab;
+    transition: all 0.3s ease;
+}
+
+.draggable-item:active {
+    cursor: grabbing;
+}
+
+.draggable-item.dragging {
+    animation: floatItem 1s infinite;
+    opacity: 0.8;
+}
+
+/* 드래그 아이템 툴팁 */
+.draggable-item:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* 드롭존 효과 */
+.drop-zone {
+    transition: all 0.3s ease;
+    border: 2px dashed transparent;
+    border-radius: 10px;
+}
+
+.drop-zone.highlight {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 드롭존 반짝이는 효과 */
+@keyframes dropZoneGlow {
+    0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+}
+
+.drop-zone {
+    animation: dropZoneGlow 2s infinite;
+}
+
+/* 힌트 텍스트 애니메이션 */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.hint-text {
+    animation: fadeInOut 2s infinite;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    width: 100%;
+}
+
+/* 드래그 실패 시 돌아가기 애니메이션 */
+.draggable-item.return {
+    transition: all 0.5s ease;
+}
+/* 슬라이더 관련 애니메이션 */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.total-points.warning {
+    color: #ff6b6b;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes sliderGlow {
+    0% { box-shadow: 0 0 5px #703FC4; }
+    50% { box-shadow: 0 0 15px #703FC4; }
+    100% { box-shadow: 0 0 5px #703FC4; }
+}
+
+/* 슬라이더 그룹 애니메이션 */
+.slider-group {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+/* 슬라이더 변경 애니메이션 */
+.energy-slider {
+    transition: all 0.3s ease;
+}
+
+/* 슬라이더 값 변경 애니메이션 */
+.slider-value {
+    transition: all 0.3s ease;
+}
+
+/* 남은 에너지 경고 애니메이션 */
+@keyframes warningPulse {
+    0% { color: #fff; }
+    50% { color: #ff6b6b; }
+    100% { color: #fff; }
+}
+
+.total-points.warning {
+    animation: warningPulse 1s infinite;
+}
